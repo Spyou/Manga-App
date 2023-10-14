@@ -1,4 +1,4 @@
-# sliding_navbar
+# Manga App
 
 A new Flutter project.
 
