@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:sliding_navbar/Pages/browse_page.dart';
 import 'package:sliding_navbar/data/manga.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../Widgets/custom_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<MangaModel> banner = List.of(trending);
+    List<MangaModel> recent = List.of(recently);
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -45,6 +50,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            //Banner
             CarouselSlider.builder(
               itemCount: banner.length,
               options: CarouselOptions(
@@ -93,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Text(
-                            banner[index].genreName.toString(),
+                            banner[index].title.toString(),
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -145,6 +151,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 30,
             ),
+            //Banner Indicator
             AnimatedSmoothIndicator(
               activeIndex: activeIndex,
               count: banner.length,
@@ -160,12 +167,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Column(
               children: [
+                // Box [Top Charts, Genres]
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ZoomTapAnimation(
                       onTap: () {
-                        print('Top Charts Clicked');
+                        log('Top Charts Clicked');
                       },
                       child: Container(
                         width: 160,
@@ -229,11 +237,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Row(
+                  // Box [Schedule, Random]
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ZoomTapAnimation(
                       onTap: () {
-                        print('Schedule Clicked');
+                        log('Schedule Clicked');
                       },
                       child: Container(
                         width: 160,
@@ -263,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ZoomTapAnimation(
                       onTap: () {
-                        print('Random Clicked');
+                        log('Random Clicked');
                       },
                       child: Container(
                         width: 150,
@@ -295,8 +304,76 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            // Recently Released
+            const Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Recently",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "View All",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            mangaListBuilder(recent),
+            // Popular Manga
+            const Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Popular",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "View All",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            mangaListBuilder(recent),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget mangaListBuilder(List<MangaModel> mangaList) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      height: MediaQuery.of(context).size.height * 0.31,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: mangaList.length,
+        itemBuilder: (context, index) {
+          return CustomBox(
+            mangaModel: mangaList[index],
+          );
+        },
       ),
     );
   }

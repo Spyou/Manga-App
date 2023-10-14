@@ -203,7 +203,7 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                   padding: const EdgeInsets.only(top: 80),
                   child: Center(
                     child: Text(
-                      mangaList[index].genreName.toString(),
+                      mangaList[index].title.toString(),
                       style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
