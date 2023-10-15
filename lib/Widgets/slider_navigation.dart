@@ -21,10 +21,10 @@ class _BottomNavbarState extends State<BottomNavbar> {
   ];
 
   final Map<String, IconData> _icons = const {
-    'Home': FluentIcons.home_20_regular,
-    'Search': FluentIcons.search_20_regular,
-    'My List': FluentIcons.bookmark_20_regular,
-    'Account': FluentIcons.person_20_regular,
+    'Home': FluentIcons.home_20_filled,
+    'Search': FluentIcons.search_20_filled,
+    'My List': FluentIcons.bookmark_20_filled,
+    'Account': FluentIcons.person_circle_20_filled,
   };
 
   int _currentIndex = 0;
@@ -36,7 +36,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color.fromARGB(170, 20, 20, 20),
+          backgroundColor: const Color.fromARGB(255, 18, 18, 18),
           items: _icons
               .map(
                 (label, icon) => MapEntry(

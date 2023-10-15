@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<MangaModel> banner = List.of(trending);
     List<MangaModel> recent = List.of(recently);
+    List<MangaModel> poPular = List.of(popular);
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -85,7 +86,10 @@ class _HomePageState extends State<HomePage> {
                         height: size.height / 3.0,
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [Colors.black, Colors.transparent],
+                            colors: [
+                              Color.fromARGB(255, 18, 18, 18),
+                              Colors.transparent
+                            ],
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                           ),
@@ -329,7 +333,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            mangaListBuilder(recent),
+            recentListBuilder(recent),
             // Popular Manga
             const Padding(
               padding: EdgeInsets.all(20.0),
@@ -355,23 +359,43 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            mangaListBuilder(recent),
+            popularListBuilder(poPular),
           ],
         ),
       ),
     );
   }
 
-  Widget mangaListBuilder(List<MangaModel> mangaList) {
+  Widget recentListBuilder(List<MangaModel> recentList) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       height: MediaQuery.of(context).size.height * 0.31,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: mangaList.length,
+        itemCount: recentList.length,
         itemBuilder: (context, index) {
           return CustomBox(
-            mangaModel: mangaList[index],
+            imageAsset: recentList[index].imageAsset.toString(),
+            mangaName: recentList[index].title.toString(),
+            chapters: recentList[index].released.toString(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget popularListBuilder(List<MangaModel> popularList) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      height: MediaQuery.of(context).size.height * 0.31,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: popularList.length,
+        itemBuilder: (context, index) {
+          return CustomBox(
+            imageAsset: popularList[index].imageAsset.toString(),
+            mangaName: popularList[index].title.toString(),
+            chapters: popularList[index].released.toString(),
           );
         },
       ),

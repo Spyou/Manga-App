@@ -100,3 +100,53 @@ final recently = [
       title: "Monster",
       released: "10 Chapters"),
 ];
+
+final popular = [
+  MangaModel(
+      imageAsset:
+          "https://static.displate.com/280x392/displate/2023-06-26/611acc49e69e80765d0dfc4ba3b71878_3db311585a9f2f85088ad3e7434f14c8.jpg",
+      title: "Berserk!",
+      released: "101 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1b0f0c7b-7b0c-412a-8de3-f131c1e07f94/One+Piece+100.jpg",
+      title: "One Piece",
+      released: "1080 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://rukminim2.flixcart.com/image/850/1000/kyt0ya80/poster/j/z/q/medium-bleach-anime-series-matte-finish-poster-posterpoint6397-original-imagaybn9ux8adqf.jpeg?q=20",
+      title: "Bleach",
+      released: "14 Chapters"),
+  MangaModel(
+      imageAsset: "https://m.media-amazon.com/images/I/81s+jxE5KEL.jpg",
+      title: "Jujutsu Kaisen",
+      released: "10 Chapters"),
+  MangaModel(
+      imageAsset: "https://flxt.tmsimg.com/assets/p24955247_b_v13_ab.jpg",
+      title: "Zom 100: Bucket List of the Dead",
+      released: "109 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://images.meesho.com/images/products/93006485/yaeuo_512.webp",
+      title: "Attack on Titan",
+      released: "80 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://i.pinimg.com/1200x/73/f9/62/73f962ffd7c064129f9c06c6cfa10e80.jpg",
+      title: "Demon Slayer",
+      released: "20 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://i.pinimg.com/564x/48/19/7c/48197c68aecfec84d3ab5e03fce3b90d.jpg",
+      title: "Naruto",
+      released: "19 Chapters"),
+  MangaModel(
+      imageAsset: "https://m.media-amazon.com/images/I/810juzDPc1L.jpg",
+      title: "Dragon Ball",
+      released: "6 Chapters"),
+  MangaModel(
+      imageAsset:
+          "https://m.media-amazon.com/images/M/MV5BM2ZkYTAwMGMtOGEwOS00MzBjLTgxOGYtZTYwY2E1ZjMyZmY4XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg",
+      title: "Monster",
+      released: "10 Chapters"),
+];

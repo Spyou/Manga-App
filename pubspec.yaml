@@ -29,10 +29,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  coolicons: ^1.0.0
   cupertino_icons: ^1.0.2
   fluentui_system_icons: ^1.1.214
   flutter:
     sdk: flutter
+  google_fonts: ^6.1.0
   http: ^1.1.0
   smooth_page_indicator: ^1.1.0
   zoom_tap_animation: ^1.1.0

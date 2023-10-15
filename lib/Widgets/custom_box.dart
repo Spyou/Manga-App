@@ -1,13 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:sliding_navbar/data/manga.dart';
 
 // ignore: must_be_immutable
 class CustomBox extends StatelessWidget {
-  MangaModel mangaModel;
+  String imageAsset;
+  String chapters;
+  String mangaName;
   CustomBox({
     Key? key,
-    required this.mangaModel,
+    required this.imageAsset,
+    required this.chapters,
+    required this.mangaName,
   }) : super(key: key);
 
   @override
@@ -26,7 +29,7 @@ class CustomBox extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: NetworkImage(mangaModel.imageAsset!),
+              image: NetworkImage(imageAsset),
               fit: BoxFit.cover,
             ),
           ),
@@ -39,8 +42,9 @@ class CustomBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  mangaModel.title.toString(),
-                  maxLines: 2,
+                  mangaName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -52,8 +56,8 @@ class CustomBox extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      mangaModel.released.toString(),
-                      style: TextStyle(color: Colors.white),
+                      chapters,
+                      style: const TextStyle(color: Colors.white),
                       maxLines: 1,
                     )
                   ],
@@ -64,35 +68,3 @@ class CustomBox extends StatelessWidget {
     );
   }
 }
-
-
-// Positioned(
-//             left: 15,
-//             right: 15,
-//             bottom: 0,
-//             top: 200,
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Text(
-//                   mangaModel.title.toString(),
-//                   maxLines: 2,
-//                   style: const TextStyle(
-//                     color: Colors.white,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 const SizedBox(
-//                   width: 20,
-//                 ),
-//                 Row(
-//                   children: [
-//                     Text(
-//                       mangaModel.released.toString(),
-//                       style: TextStyle(color: Colors.white),
-//                       maxLines: 1,
-//                     )
-//                   ],
-//                 )
-//               ],
-//             ))
