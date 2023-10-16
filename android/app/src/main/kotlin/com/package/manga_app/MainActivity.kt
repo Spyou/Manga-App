@@ -1,4 +1,4 @@
-package com.example.sliding_navbar
+package com.package.manga_app
 
 import io.flutter.embedding.android.FlutterActivity
 

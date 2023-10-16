@@ -2,7 +2,7 @@ name: sliding_navbar
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  change_app_package_name: ^1.1.0
   coolicons: ^1.0.0
   cupertino_icons: ^1.0.2
   fluentui_system_icons: ^1.1.214
@@ -37,6 +38,7 @@ dependencies:
   google_fonts: ^6.1.0
   http: ^1.1.0
   smooth_page_indicator: ^1.1.0
+  velocity_x: ^4.1.1
   zoom_tap_animation: ^1.1.0
 
 dev_dependencies:
@@ -48,7 +50,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sliding_navbar/Widgets/slider_navigation.dart';
+import 'package:sliding_navbar/Widgets/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,11 +1,11 @@
-import 'dart:developer';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:sliding_navbar/Pages/Detail%20Screen/screens/detail.page.dart';
 import 'package:sliding_navbar/Pages/browse_page.dart';
 import 'package:sliding_navbar/data/manga.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../Widgets/custom_box.dart';
@@ -29,6 +29,8 @@ class _HomePageState extends State<HomePage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 10),
@@ -177,7 +179,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     ZoomTapAnimation(
                       onTap: () {
-                        log('Top Charts Clicked');
+                        VxToast.show(context,
+                            msg: 'Coming Soon',
+                            bgColor: const Color.fromARGB(255, 209, 209, 209));
                       },
                       child: Container(
                         width: 160,
@@ -246,7 +250,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     ZoomTapAnimation(
                       onTap: () {
-                        log('Schedule Clicked');
+                        VxToast.show(context,
+                            msg: 'Coming Soon',
+                            bgColor: Color.fromARGB(255, 209, 209, 209));
                       },
                       child: Container(
                         width: 160,
@@ -276,7 +282,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ZoomTapAnimation(
                       onTap: () {
-                        log('Random Clicked');
+                        VxToast.show(context,
+                            msg: 'Coming Soon',
+                            bgColor: const Color.fromARGB(255, 209, 209, 209));
                       },
                       child: Container(
                         width: 150,
@@ -366,23 +374,33 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // RecentLy List
+
   Widget recentListBuilder(List<MangaModel> recentList) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      height: MediaQuery.of(context).size.height * 0.31,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: recentList.length,
-        itemBuilder: (context, index) {
-          return CustomBox(
-            imageAsset: recentList[index].imageAsset.toString(),
-            mangaName: recentList[index].title.toString(),
-            chapters: recentList[index].released.toString(),
-          );
-        },
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const DetailPage()));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        height: MediaQuery.of(context).size.height * 0.31,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: recentList.length,
+          itemBuilder: (context, index) {
+            return CustomBox(
+              imageAsset: recentList[index].imageAsset.toString(),
+              mangaName: recentList[index].title.toString(),
+              chapters: recentList[index].released.toString(),
+            );
+          },
+        ),
       ),
     );
   }
+
+  // Popular List
 
   Widget popularListBuilder(List<MangaModel> popularList) {
     return Container(

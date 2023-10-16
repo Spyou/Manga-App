@@ -54,7 +54,7 @@ final genre = [
 final recently = [
   MangaModel(
       imageAsset:
-          "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1b0f0c7b-7b0c-412a-8de3-f131c1e07f94/One+Piece+100.jpg",
+          "https://i.pinimg.com/originals/44/a6/8f/44a68f2ebc9a5373de2724f9620d04f7.png",
       title: "One Piece",
       released: "1080 Chapters"),
   MangaModel(
@@ -109,7 +109,7 @@ final popular = [
       released: "101 Chapters"),
   MangaModel(
       imageAsset:
-          "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1b0f0c7b-7b0c-412a-8de3-f131c1e07f94/One+Piece+100.jpg",
+          "https://i.pinimg.com/originals/44/a6/8f/44a68f2ebc9a5373de2724f9620d04f7.png",
       title: "One Piece",
       released: "1080 Chapters"),
   MangaModel(
