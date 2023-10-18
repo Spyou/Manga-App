@@ -1,4 +1,4 @@
-package com.package.manga_app
+package com.duo_dev.manga_app
 
 import io.flutter.embedding.android.FlutterActivity
 

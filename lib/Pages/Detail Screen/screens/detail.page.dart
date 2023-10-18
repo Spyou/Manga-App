@@ -44,7 +44,7 @@ class DetailPage extends StatelessWidget {
       body: Stack(
         children: [
           //Banner
-          detailBanner(context, banner),
+          SingleChildScrollView(child: detailBanner(context, banner)),
           //Detail Box
           DetailBox(size: size),
           //BottomSheet
@@ -64,6 +64,20 @@ class DetailPage extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(
+                    height: 300,
+                    width: 300,
+                    child: ListView.builder(
+                        itemCount: 20,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(
+                              'Chapter ${index + 1}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
@@ -101,7 +115,7 @@ class DetailPage extends StatelessWidget {
       child: ZoomTapAnimation(
         onTap: () {
           showModalBottomSheet(
-              backgroundColor: const Color.fromARGB(255, 62, 62, 62),
+              backgroundColor: const Color.fromARGB(255, 34, 34, 34),
               context: context,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

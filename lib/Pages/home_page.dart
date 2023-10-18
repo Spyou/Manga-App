@@ -42,7 +42,13 @@ class _HomePageState extends State<HomePage> {
                   color: const Color.fromARGB(255, 69, 69, 69),
                 ),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      VxToast.show(
+                        context,
+                        msg: 'List Updated',
+                        bgColor: const Color.fromARGB(255, 209, 209, 209),
+                      );
+                    },
                     icon: const Icon(
                       Icons.bookmark_border_rounded,
                       color: Colors.white,
@@ -337,7 +343,7 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

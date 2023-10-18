@@ -13,7 +13,7 @@ class MoreBottomSheet extends StatelessWidget {
           width: size.width * .15,
           margin: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: const Color.fromARGB(255, 163, 163, 163),
             borderRadius: BorderRadius.circular(16),
           ),
         ),

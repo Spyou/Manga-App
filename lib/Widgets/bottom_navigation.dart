@@ -20,38 +20,61 @@ class _BottomNavbarState extends State<BottomNavbar> {
     const AccountPage()
   ];
 
-  final Map<String, IconData> _icons = const {
-    'Home': FluentIcons.home_20_filled,
-    'Search': FluentIcons.search_20_filled,
-    'My List': FluentIcons.bookmark_20_filled,
-    'Account': FluentIcons.person_circle_20_filled,
-  };
-
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: ClipRRect(
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashColor: const Color.fromARGB(255, 46, 46, 46),
+        ),
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           backgroundColor: const Color.fromARGB(255, 18, 18, 18),
-          items: _icons
-              .map(
-                (label, icon) => MapEntry(
-                  label,
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      icon,
-                      size: 25,
-                    ),
-                    label: label,
-                  ),
-                ),
-              )
-              .values
-              .toList(),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                FluentIcons.home_20_regular,
+              ),
+              label: 'Home',
+              tooltip: 'Home',
+              activeIcon: Icon(
+                FluentIcons.home_20_filled,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                FluentIcons.search_20_regular,
+              ),
+              label: 'Search',
+              tooltip: 'Search',
+              activeIcon: Icon(
+                FluentIcons.search_20_filled,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                FluentIcons.bookmark_20_regular,
+              ),
+              label: 'My List',
+              tooltip: 'My List',
+              activeIcon: Icon(
+                FluentIcons.bookmark_20_filled,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                FluentIcons.person_20_regular,
+              ),
+              label: 'Account',
+              tooltip: 'Account',
+              activeIcon: Icon(
+                FluentIcons.person_20_filled,
+              ),
+            ),
+          ],
           currentIndex: _currentIndex,
           selectedItemColor: const Color.fromARGB(253, 255, 213, 0),
           selectedFontSize: 11,

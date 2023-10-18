@@ -29,7 +29,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
-  change_app_package_name: ^1.1.0
   coolicons: ^1.0.0
   cupertino_icons: ^1.0.2
   fluentui_system_icons: ^1.1.214
@@ -45,6 +44,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  change_app_package_name: ^1.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
