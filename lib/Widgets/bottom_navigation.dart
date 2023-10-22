@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:sliding_navbar/Pages/Home%20Screen/home_page.dart';
 import 'package:sliding_navbar/Pages/account_page.dart';
-import 'package:sliding_navbar/Pages/home_page.dart';
 import 'package:sliding_navbar/Pages/my_list.dart';
 import 'package:sliding_navbar/Pages/search_page.dart';
 

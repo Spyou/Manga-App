@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -5,15 +6,21 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-          child: Text(
-        'Account',
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.blueAccent,
+          child: Chip(
+        labelPadding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(10),
+        color: MaterialStatePropertyAll(Colors.black),
+        avatar: Icon(
+          FluentIcons.arrow_shuffle_20_filled,
+          size: 25,
+          color: Colors.yellow,
+        ),
+        label: Text(
+          "Random",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       )),
     );

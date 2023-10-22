@@ -1,14 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sliding_navbar/Pages/Detail%20Screen/screens/detail.page.dart';
-import 'package:sliding_navbar/Pages/browse_page.dart';
+import 'package:sliding_navbar/Pages/Home%20Screen/widgets/genre.dart';
 import 'package:sliding_navbar/data/manga.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../Widgets/custom_box.dart';
+import '../../Widgets/custom_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -131,24 +132,35 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                height: 45,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: const Color.fromARGB(253, 255, 213, 0),
-                                ),
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.play_arrow_rounded),
-                                    Text(
-                                      'Watch Now',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(PageTransition(
+                                      type: PageTransitionType
+                                          .rightToLeftWithFade,
+                                      duration:
+                                          const Duration(milliseconds: 700),
+                                      child: const DetailPage()));
+                                },
+                                child: Container(
+                                  height: 45,
+                                  width: 180,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color:
+                                        const Color.fromARGB(253, 255, 213, 0),
+                                  ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.play_arrow_rounded),
+                                      Text(
+                                        'Watch Now',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               )
                             ],
@@ -409,19 +421,25 @@ class _HomePageState extends State<HomePage> {
   // Popular List
 
   Widget popularListBuilder(List<MangaModel> popularList) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      height: MediaQuery.of(context).size.height * 0.31,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: popularList.length,
-        itemBuilder: (context, index) {
-          return CustomBox(
-            imageAsset: popularList[index].imageAsset.toString(),
-            mangaName: popularList[index].title.toString(),
-            chapters: popularList[index].released.toString(),
-          );
-        },
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const DetailPage()));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        height: MediaQuery.of(context).size.height * 0.31,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: popularList.length,
+          itemBuilder: (context, index) {
+            return CustomBox(
+              imageAsset: popularList[index].imageAsset.toString(),
+              mangaName: popularList[index].title.toString(),
+              chapters: popularList[index].released.toString(),
+            );
+          },
+        ),
       ),
     );
   }

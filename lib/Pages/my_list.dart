@@ -1,7 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:sliding_navbar/Pages/common%20widgets/basic_container.dart';
 import 'package:sliding_navbar/data/manga.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class MyList extends StatefulWidget {
   const MyList({super.key});
@@ -65,20 +66,74 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                 ],
               ),
               actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      FluentIcons.arrow_sort_20_filled,
-                      color: Colors.white,
-                    )),
+                PopupMenuButton(
+                  color: const Color.fromARGB(255, 35, 35, 35),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  tooltip: 'Sorting',
+                  icon: const Icon(
+                    FluentIcons.arrow_sort_20_filled,
+                    color: Colors.white,
+                  ),
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () {
+                        VxToast.show(context, msg: 'Sort Updating To Score');
+                      },
+                      child: const Text(
+                        'Sort by Score',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () {
+                        VxToast.show(context, msg: 'Sort Updating To Title');
+                      },
+                      child: const Text(
+                        'Sort by Title',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () {
+                        VxToast.show(context,
+                            msg: 'Sort Updating To Realease Date');
+                      },
+                      child: const Text(
+                        'Sort by Realease Date',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () {
+                        VxToast.show(context,
+                            msg: 'Sort Updating To Last Updated');
+                      },
+                      child: const Text(
+                        'Sort by Last Updated',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ],
           body: Column(
             children: [
-              const SizedBox(
-                height: 10,
-              ),
               TabBar(
                 isScrollable: true,
                 splashBorderRadius: BorderRadius.circular(50),
@@ -115,14 +170,14 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
-                  children: [
-                    allManga(),
-                    allManga(),
-                    allManga(),
-                    allManga(),
-                    allManga(),
-                    allManga(),
-                    allManga(),
+                  children: const [
+                    AllManga(),
+                    AllManga(),
+                    AllManga(),
+                    AllManga(),
+                    AllManga(),
+                    AllManga(),
+                    AllManga(),
                   ],
                 ),
               ),
@@ -130,151 +185,6 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
           ),
         ),
       ),
-      // body: Column(
-      //   children: [
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     TabBar(
-      //       isScrollable: true,
-      //       splashFactory: NoSplash.splashFactory,
-      //       dividerColor: Colors.transparent,
-      //       labelColor: Colors.white,
-      //       indicatorColor: Colors.white,
-      //       unselectedLabelColor: Colors.grey,
-      //       controller: _tabController,
-      //       tabs: const [
-      //         Tab(
-      //           text: 'READING (14)',
-      //         ),
-      //         Tab(
-      //           text: 'RE-READING (14)',
-      //         ),
-      //         Tab(
-      //           text: 'COMPLETED (14)',
-      //         ),
-      //         Tab(
-      //           text: 'PLANNING (4)',
-      //         ),
-      //         Tab(
-      //           text: 'PAUSED (5)',
-      //         ),
-      //         Tab(
-      //           text: 'DROPPED (0)',
-      //         ),
-      //         Tab(
-      //           text: 'ALL (100)',
-      //         ),
-      //       ],
-      //     ),
-      //     Expanded(
-      //       child: TabBarView(
-      //         controller: _tabController,
-      //         children: [
-      //           allManga(),
-      //           allManga(),
-      //           allManga(),
-      //           allManga(),
-      //           allManga(),
-      //           allManga(),
-      //           allManga(),
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // ),
-    );
-  }
-
-  Widget allManga() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
-      child: Stack(
-        children: [
-          GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisExtent: 300,
-                crossAxisCount: 2,
-                crossAxisSpacing: 13,
-              ),
-              itemCount: 20,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ZoomTapAnimation(
-                      child: Container(
-                        width: 180,
-                        height: 240,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                    "https://m.media-amazon.com/images/I/81KVomnzLmL.jpg"),
-                                fit: BoxFit.cover)),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      'Chainsaw Man',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                );
-              })
-        ],
-      ),
-    );
-  }
-
-  Widget genres(List<MangaModel> mangaList) {
-    return Container(
-      padding: const EdgeInsets.only(top: 25, left: 10, right: 10),
-      child: ListView.builder(
-          itemCount: genreTop.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Stack(
-              children: [
-                ZoomTapAnimation(
-                  child: Container(
-                    height: 170,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
-                        image:
-                            AssetImage(mangaList[index].imageAsset.toString()),
-                        colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.30), BlendMode.darken),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    margin: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                      top: 0,
-                      bottom: 25,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 80),
-                  child: Center(
-                    child: Text(
-                      mangaList[index].title.toString(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
-                    ),
-                  ),
-                )
-              ],
-            );
-          }),
     );
   }
 }
