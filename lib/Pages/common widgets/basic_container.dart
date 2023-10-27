@@ -1,48 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import 'package:sliding_navbar/data/manga.dart';
 
 class AllManga extends StatelessWidget {
   const AllManga({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<MangaModel> poPular = List.of(popular);
     return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+      padding: const EdgeInsets.only(top: 15, left: 25, right: 25),
       child: Stack(
         children: [
           GridView.builder(
+              shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisExtent: 300,
+                mainAxisExtent: 325,
                 crossAxisCount: 2,
                 crossAxisSpacing: 13,
               ),
-              itemCount: 20,
-              physics: const BouncingScrollPhysics(),
+              itemCount: popular.length,
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ZoomTapAnimation(
-                      child: Container(
-                        width: 180,
-                        height: 240,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                    "https://m.media-amazon.com/images/I/81KVomnzLmL.jpg"),
-                                fit: BoxFit.cover)),
-                      ),
+                    Container(
+                      width: 180,
+                      height: 240,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  poPular[index].imageAsset.toString()),
+                              fit: BoxFit.cover)),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      'Chainsaw Man',
-                      style: TextStyle(color: Colors.white),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          popular[index].title.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          popular[index].released.toString(),
+                          style: TextStyle(color: Colors.grey[400]),
+                        ),
+                      ],
                     ),
                   ],
                 );
-              })
+              }),
         ],
       ),
     );
