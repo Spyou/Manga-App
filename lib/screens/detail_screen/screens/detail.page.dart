@@ -1,9 +1,9 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_navbar/Pages/Detail%20Screen/Widgets/more_bottom_sheet.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../data/manga.dart';
+import '../Widgets/more_bottom_sheet.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});

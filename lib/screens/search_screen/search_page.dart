@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../data/manga.dart';
+import '../../data/manga.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

@@ -1,9 +1,10 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_navbar/Pages/Home%20Screen/home_page.dart';
-import 'package:sliding_navbar/Pages/account_page.dart';
-import 'package:sliding_navbar/Pages/my_list.dart';
-import 'package:sliding_navbar/Pages/search_page.dart';
+
+import '../screens/account_page.dart';
+import '../screens/home/home_page.dart';
+import '../screens/my_list.dart';
+import '../screens/search_screen/search_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
