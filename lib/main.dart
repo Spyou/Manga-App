@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+<<<<<<< Updated upstream
 import 'package:manga_app/Widgets/bottom_navigation.dart';
 import 'package:manga_app/blocs/home_bloc/home_bloc.dart';
 import 'package:manga_app/graphql/client.dart';
 
 import 'di/get_it.dart';
+=======
+
+import 'Widgets/bottom_navigation.dart';
+>>>>>>> Stashed changes
 
 void main() {
   setupDependencies();

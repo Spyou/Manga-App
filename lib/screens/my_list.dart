@@ -1,8 +1,14 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream:lib/screens/my_list.dart
 import 'package:velocity_x/velocity_x.dart';
 
 import '../data/manga.dart';
+=======
+import 'package:manga_app/data/manga.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+>>>>>>> Stashed changes:lib/Pages/my_list.dart
 import 'common widgets/basic_container.dart';
 
 class MyList extends StatefulWidget {
