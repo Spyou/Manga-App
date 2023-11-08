@@ -2,14 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:manga_app/data/manga.dart';
+import 'package:manga_app/screens/detail_screen/screens/detail.page.dart';
+import 'package:manga_app/screens/home/widgets/genre.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../Widgets/custom_box.dart';
-import '../Detail Screen/screens/detail.page.dart';
-import 'widgets/genre.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
