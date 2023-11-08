@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sliding_navbar/data/manga.dart';
+import 'package:manga_app/data/manga.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class BrowsePage extends StatefulWidget {

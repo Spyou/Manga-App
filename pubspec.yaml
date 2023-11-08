@@ -1,4 +1,4 @@
-name: sliding_navbar
+name: manga_app
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -28,24 +28,25 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.3.0
   carousel_slider: ^4.2.1
   coolicons: ^1.0.0
   cupertino_icons: ^1.0.2
   fluentui_system_icons: ^1.1.214
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
   flutter_staggered_animations: ^1.1.1
+  flutter_svg: ^1.0.3
+  get_it: ^7.6.4
   google_fonts: ^6.1.0
+  graphql_flutter: ^5.1.2
   http: ^1.1.0
   page_transition: ^2.1.0
+  shared_preferences: ^2.0.13
   smooth_page_indicator: ^1.1.0
   velocity_x: ^4.1.1
   zoom_tap_animation: ^1.1.0
-  flutter_bloc: ^8.0.1
-  shared_preferences: ^2.0.13
-  flutter_svg: ^1.0.3
-  graphql_flutter: ^5.1.2
-  get_it: ^7.6.4
 
 dev_dependencies:
   change_app_package_name: ^1.1.0

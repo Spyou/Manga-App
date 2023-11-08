@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:sliding_navbar/blocs/home_bloc/home_bloc.dart';
-import 'package:sliding_navbar/graphql/client.dart';
+import 'package:manga_app/graphql/client.dart';
+
+import '../blocs/home_bloc/home_bloc.dart';
 
 final getIt = GetIt.instance;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sliding_navbar/data/manga.dart';
+
+import '../../data/manga.dart';
 
 class AllManga extends StatelessWidget {
   const AllManga({super.key});

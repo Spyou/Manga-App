@@ -1,5 +1,5 @@
 // Step 3: Define your GraphQL query
-const String bannerQuery ='''
+const String bannerQuery = '''
   query {
   Page {
     media(type: MANGA) {
