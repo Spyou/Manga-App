@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../data/manga.dart';
-<<<<<<< Updated upstream:lib/screens/detail_screen/screens/detail.page.dart
 import '../Widgets/more_bottom_sheet.dart';
-=======
-import '../widgets/more_bottom_sheet.dart';
->>>>>>> Stashed changes:lib/Pages/Detail Screen/screens/detail.page.dart
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});

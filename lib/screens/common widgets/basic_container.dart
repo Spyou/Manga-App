@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream:lib/screens/common widgets/basic_container.dart
 
 import '../../data/manga.dart';
-=======
-import 'package:manga_app/data/manga.dart';
->>>>>>> Stashed changes:lib/Pages/common widgets/basic_container.dart
 
 class AllManga extends StatelessWidget {
   const AllManga({super.key});

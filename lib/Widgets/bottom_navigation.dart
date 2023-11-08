@@ -1,17 +1,10 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
-<<<<<<< Updated upstream
+import '../Pages/Home Screen/home_page.dart';
 import '../screens/account_page.dart';
-import '../screens/home/home_page.dart';
 import '../screens/my_list.dart';
 import '../screens/search_screen/search_page.dart';
-=======
-import '../Pages/Home Screen/home_page.dart';
-import '../Pages/account_page.dart';
-import '../Pages/my_list.dart';
-import '../Pages/search_page.dart';
->>>>>>> Stashed changes
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
