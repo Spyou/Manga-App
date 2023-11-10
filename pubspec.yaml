@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_staggered_animations: ^1.1.1
   flutter_svg: ^1.0.3
+  fluttertoast: ^8.2.3
   get_it: ^7.6.4
   google_fonts: ^6.1.0
   graphql_flutter: ^5.1.2

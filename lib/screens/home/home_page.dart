@@ -145,6 +145,33 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 180,
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                              image: NetworkImage(banner[index]
+                                                  .coverImage!
+                                                  .large
+                                                  .toString()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                                 Positioned(
                                   left: 0,
                                   right: 0,
@@ -225,199 +252,230 @@ class _HomePageState extends State<HomePage> {
                       height: 30,
                     ),
                     //Banner Indicator
-                    AnimatedSmoothIndicator(
-                      activeIndex: activeIndex,
-                      count: 4,
-                      effect: const WormEffect(
-                          spacing: 8,
-                          dotWidth: 10,
-                          dotHeight: 10,
-                          activeDotColor: Colors.white,
-                          dotColor: Color.fromARGB(255, 69, 69, 69)),
+                    AnimationConfiguration.synchronized(
+                      duration: const Duration(milliseconds: 500),
+                      child: SlideAnimation(
+                        verticalOffset: 50.0,
+                        child: AnimatedSmoothIndicator(
+                          activeIndex: activeIndex,
+                          count: 4,
+                          effect: const WormEffect(
+                              spacing: 8,
+                              dotWidth: 10,
+                              dotHeight: 10,
+                              activeDotColor: Colors.white,
+                              dotColor: Color.fromARGB(255, 69, 69, 69)),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    Column(
-                      children: [
-                        // Box [Top Charts, Genres]
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ZoomTapAnimation(
-                              onTap: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor: const Color.fromARGB(
-                                        255, 209, 209, 209));
-                              },
-                              child: Container(
-                                width: 160,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.data_trending_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                    AnimationConfiguration.synchronized(
+                      duration: const Duration(milliseconds: 500),
+                      child: SlideAnimation(
+                        duration: Duration(milliseconds: 500),
+                        verticalOffset: 50,
+                        child: FadeInAnimation(
+                          child: Column(
+                            children: [
+                              // Box [Top Charts, Genres]
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ZoomTapAnimation(
+                                    onTap: () {
+                                      VxToast.show(context,
+                                          msg: 'Coming Soon',
+                                          bgColor: const Color.fromARGB(
+                                              255, 209, 209, 209));
+                                    },
+                                    child: Container(
+                                      width: 160,
+                                      margin: const EdgeInsets.only(
+                                          left: 20, right: 20, top: 15),
+                                      padding: const EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: const Color.fromARGB(
+                                                  255, 73, 73, 73))),
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Icon(
+                                            FluentIcons.data_trending_20_filled,
+                                            color: Color.fromARGB(
+                                                253, 255, 213, 0),
+                                          ),
+                                          Text(
+                                            'Top Charts',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    Text(
-                                      'Top Charts',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
+                                  ),
+                                  ZoomTapAnimation(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const BrowsePage()));
+                                    },
+                                    child: Container(
+                                      width: 150,
+                                      margin: const EdgeInsets.only(
+                                          left: 20, right: 20, top: 15),
+                                      padding: const EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: const Color.fromARGB(
+                                                  255, 73, 73, 73))),
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Icon(
+                                            FluentIcons.grid_20_filled,
+                                            color: Color.fromARGB(
+                                                253, 255, 213, 0),
+                                          ),
+                                          Text(
+                                            'Genres',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
-                            ),
-                            ZoomTapAnimation(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const BrowsePage()));
-                              },
-                              child: Container(
-                                width: 150,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.grid_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                              Row(
+                                // Box [Schedule, Random]
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ZoomTapAnimation(
+                                    onTap: () {
+                                      VxToast.show(context,
+                                          msg: 'Coming Soon',
+                                          bgColor: const Color.fromARGB(
+                                              255, 209, 209, 209));
+                                    },
+                                    child: Container(
+                                      width: 160,
+                                      margin: const EdgeInsets.only(
+                                          left: 20, right: 20, top: 15),
+                                      padding: const EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: const Color.fromARGB(
+                                                  255, 73, 73, 73))),
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Icon(
+                                            FluentIcons.calendar_20_filled,
+                                            color: Color.fromARGB(
+                                                253, 255, 213, 0),
+                                          ),
+                                          Text(
+                                            'Schedule',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    Text(
-                                      'Genres',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
+                                  ),
+                                  ZoomTapAnimation(
+                                    onTap: () {
+                                      VxToast.show(context,
+                                          msg: 'Coming Soon',
+                                          bgColor: const Color.fromARGB(
+                                              255, 209, 209, 209));
+                                    },
+                                    child: Container(
+                                      width: 150,
+                                      margin: const EdgeInsets.only(
+                                          left: 20, right: 20, top: 15),
+                                      padding: const EdgeInsets.all(10.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: const Color.fromARGB(
+                                                  255, 73, 73, 73))),
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Icon(
+                                            FluentIcons.arrow_shuffle_20_filled,
+                                            color: Color.fromARGB(
+                                                253, 255, 213, 0),
+                                          ),
+                                          Text(
+                                            'Random',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
-                        Row(
-                          // Box [Schedule, Random]
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ZoomTapAnimation(
-                              onTap: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor:
-                                        Color.fromARGB(255, 209, 209, 209));
-                              },
-                              child: Container(
-                                width: 160,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.calendar_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
-                                    ),
-                                    Text(
-                                      'Schedule',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            ZoomTapAnimation(
-                              onTap: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor: const Color.fromARGB(
-                                        255, 209, 209, 209));
-                              },
-                              child: Container(
-                                width: 150,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.arrow_shuffle_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
-                                    ),
-                                    Text(
-                                      'Random',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
                     // Recently Released
-                    const Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Recently",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    AnimationConfiguration.synchronized(
+                      duration: const Duration(milliseconds: 500),
+                      child: const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: SlideAnimation(
+                          horizontalOffset: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Recently",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "View All",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "View All",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                     recentListBuilder(recently),
@@ -457,7 +515,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(state.error),
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       }),
     );
@@ -483,19 +541,29 @@ class _HomePageState extends State<HomePage> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const DetailPage()));
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: MediaQuery.of(context).size.height * 0.31,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: recentList.length,
-          itemBuilder: (context, index) {
-            return CustomBox(
-              imageAsset: recentList[index].imageAsset.toString(),
-              mangaName: recentList[index].title.toString(),
-              chapters: recentList[index].released.toString(),
-            );
-          },
+      child: AnimationConfiguration.synchronized(
+        duration: const Duration(milliseconds: 500),
+        child: SlideAnimation(
+          curve: Curves.linearToEaseOut,
+          duration: const Duration(milliseconds: 1000),
+          horizontalOffset: 100,
+          child: FadeInAnimation(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              height: MediaQuery.of(context).size.height * 0.22,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: recentList.length,
+                itemBuilder: (context, index) {
+                  return CustomBox(
+                      imageAsset: recentList[index].imageAsset.toString(),
+                      mangaName: recentList[index].title.toString(),
+                      chapters: recentList[index].released.toString(),
+                      rating: recentList[index].rating.toString());
+                },
+              ),
+            ),
+          ),
         ),
       ),
     );

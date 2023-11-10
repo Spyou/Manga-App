@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:manga_app/screens/home/home_page.dart';
 
-import '../Pages/Home Screen/home_page.dart';
 import '../screens/account_page.dart';
 import '../screens/my_list.dart';
 import '../screens/search_screen/search_page.dart';

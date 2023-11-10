@@ -4,6 +4,7 @@ class MangaModel {
   String? movieRating;
   String? year;
   String? released;
+  String? rating;
   final List<Map>? cast;
   final List<Map>? comments;
   MangaModel(
@@ -13,6 +14,7 @@ class MangaModel {
       this.movieRating,
       this.year,
       this.comments,
+      this.rating,
       this.cast});
 }
 
@@ -56,49 +58,59 @@ final recently = [
       imageAsset:
           "https://i.pinimg.com/originals/44/a6/8f/44a68f2ebc9a5373de2724f9620d04f7.png",
       title: "One Piece",
-      released: "1080 Chapters"),
+      released: "1080 Chapters",
+      rating: '10.0'),
   MangaModel(
       imageAsset:
           "https://rukminim2.flixcart.com/image/850/1000/kyt0ya80/poster/j/z/q/medium-bleach-anime-series-matte-finish-poster-posterpoint6397-original-imagaybn9ux8adqf.jpeg?q=20",
       title: "Bleach",
-      released: "14 Chapters"),
+      released: "14 Chapters",
+      rating: '9.0'),
   MangaModel(
       imageAsset: "https://m.media-amazon.com/images/I/81s+jxE5KEL.jpg",
       title: "Jujutsu Kaisen",
-      released: "10 Chapters"),
+      released: "10 Chapters",
+      rating: '7.0'),
   MangaModel(
       imageAsset: "https://flxt.tmsimg.com/assets/p24955247_b_v13_ab.jpg",
       title: "Zom 100: Bucket List of the Dead",
-      released: "109 Chapters"),
+      released: "109 Chapters",
+      rating: '6.1'),
   MangaModel(
       imageAsset:
           "https://images.meesho.com/images/products/93006485/yaeuo_512.webp",
       title: "Attack on Titan",
-      released: "80 Chapters"),
+      released: "80 Chapters",
+      rating: '8.9'),
   MangaModel(
       imageAsset:
           "https://i.pinimg.com/1200x/73/f9/62/73f962ffd7c064129f9c06c6cfa10e80.jpg",
       title: "Demon Slayer",
-      released: "20 Chapters"),
+      released: "20 Chapters",
+      rating: "7.3"),
   MangaModel(
       imageAsset:
           "https://i.pinimg.com/564x/48/19/7c/48197c68aecfec84d3ab5e03fce3b90d.jpg",
       title: "Naruto",
-      released: "19 Chapters"),
+      released: "19 Chapters",
+      rating: "9.9"),
   MangaModel(
       imageAsset: "https://m.media-amazon.com/images/I/810juzDPc1L.jpg",
       title: "Dragon Ball",
-      released: "6 Chapters"),
+      released: "6 Chapters",
+      rating: "10.0"),
   MangaModel(
       imageAsset:
           "https://i5.walmartimages.com/asr/5b35a398-9479-4e8c-961e-4e193f5fd72f.9bc944942fa4e4922c2beb6aac18346f.jpeg",
       title: "Berserk!",
-      released: "101 Chapters"),
+      released: "101 Chapters",
+      rating: "9.0"),
   MangaModel(
       imageAsset:
           "https://m.media-amazon.com/images/M/MV5BM2ZkYTAwMGMtOGEwOS00MzBjLTgxOGYtZTYwY2E1ZjMyZmY4XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg",
       title: "Monster",
-      released: "10 Chapters"),
+      released: "10 Chapters",
+      rating: "9.9"),
 ];
 
 final popular = [
