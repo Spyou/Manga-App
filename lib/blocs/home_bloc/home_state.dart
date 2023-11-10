@@ -6,11 +6,12 @@ abstract class HomeState {}
 class HomeInitial extends HomeState {}
 
 class Loading extends HomeState {}
+class HomeFetchResult extends HomeState{
+   List<AnimeSmallModel> recentlyList;
+   List<BannerData> bannerList;
+   List<AnimeSmallModel> trendingList;
 
-class HomeBannerListResult extends HomeState {
-  final List<BannerMedia> list;
-
-  HomeBannerListResult({required this.list});
+  HomeFetchResult(this.recentlyList, this.bannerList,this.trendingList);
 }
 
 class ErrorLoad extends HomeState {
