@@ -1,131 +1,140 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:manga_app/screens/detail_screen/Widgets/more_bottom_sheet.dart';
+import 'package:manga_app/utils/ui/colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../data/manga.dart';
-import '../Widgets/more_bottom_sheet.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  const DetailPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     List<MangaModel> banner = List.of(trending);
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        scrolledUnderElevation: 0,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios_new)),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              FluentIcons.bookmark_20_regular,
-              size: 28,
+        body: CustomScrollView(slivers: [
+      SliverAppBar(
+          pinned: true,
+          expandedHeight: 400,
+          backgroundColor: AppColor.backgroundColor,
+          foregroundColor: Colors.white,
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          centerTitle: false,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios_new)),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                FluentIcons.bookmark_20_regular,
+                size: 28,
+              ),
+              onPressed: () {},
             ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(
-              FluentIcons.more_vertical_20_regular,
-              size: 28,
+            IconButton(
+              icon: const Icon(
+                FluentIcons.more_vertical_20_regular,
+                size: 28,
+              ),
+              onPressed: () {},
             ),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            //Banner
-            Column(
+          ],
+          flexibleSpace: FlexibleSpaceBar(
+            centerTitle: false,
+            // title: const Text(
+            //   'One Piece',
+            //   style: TextStyle(
+            //     color: Colors.white,
+            //     fontSize: 22.0,
+            //     fontWeight: FontWeight.w600,
+            //   ),
+            // ),
+            background: ClipRRect(
+                child: Stack(
               children: [
-                Container(
-                    height: MediaQuery.of(context).size.height * .40,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        opacity: 80,
-                        image: AssetImage(
-                          banner[0].imageAsset.toString(),
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    )),
-              ],
-            ),
-            //Detail Box
-            DetailBox(size: size),
-            //Unfinished Part
-            Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 400, horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 60, bottom: 30),
-                      child: Text(
-                        'Chapters',
+                    Container(
+                        height: MediaQuery.of(context).size.height * .40,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            opacity: 80,
+                            image: AssetImage(
+                              banner[0].imageAsset.toString(),
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ],
+                ),
+                DetailBox(size: size),
+              ],
+            )),
+          )),
+      SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 30, left: 15, top: 20),
+              child: Text(
+                'Chapters',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListView.builder(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 400,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color.fromARGB(255, 35, 35, 35)),
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: ListTile(
+                      title: Text(
+                        'Chapter : ${index + 1}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                      subtitle: const Text(
+                        'Romance Down',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            color: Color.fromARGB(255, 136, 136, 136),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Colors.white,
+                        size: 20,
                       ),
                     ),
-                    SizedBox(
-                      height: 9000,
-                      width: size.width,
-                      child: ListView.builder(
-                          padding: const EdgeInsets.only(top: 0),
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 400,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: const Color.fromARGB(255, 35, 35, 35)),
-                              margin: const EdgeInsets.only(bottom: 20),
-                              child: ListTile(
-                                title: Text(
-                                  'Chapter : ${index + 1}',
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                subtitle: const Text(
-                                  'Romance Down',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 136, 136, 136),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14),
-                                ),
-                                trailing: const Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
-                )),
+                  );
+                }),
           ],
         ),
       ),
-    );
+    ]));
   }
 
   //Banner

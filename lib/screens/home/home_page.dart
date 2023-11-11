@@ -1,12 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:manga_app/Widgets/custom_box.dart';
 import 'package:manga_app/blocs/home_bloc/home_bloc.dart';
-import 'package:manga_app/data/manga.dart';
 import 'package:manga_app/model/banner_model.dart';
+import 'package:manga_app/utils/ui/colors.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -49,7 +51,9 @@ class _HomePageState extends State<HomePage> {
       }, builder: (context, state) {
         if (state is Loading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitSpinningLines(
+              color: AppColor.primaryColor,
+            ),
           );
         } else if (state is HomeFetchResult) {
           return Builder(builder: (context) {
@@ -85,15 +89,75 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 FadeInAnimation(
                                   child: Container(
+                                    height: size.height / .60,
                                     decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(bannerList[index]
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: CachedNetworkImage(
+                                        placeholder: (context, url) {
+                                          return const Center(
+                                            child: SpinKitSpinningLines(
+                                              color: AppColor.primaryColor,
+                                            ),
+                                          );
+                                        },
+                                        errorWidget: (context, url, error) {
+                                          return Container(
+                                            height: size.height / .60,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  bannerList[index]
+                                                      .coverImage!
+                                                      .extraLarge
+                                                      .toString(),
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        imageUrl: bannerList[index]
                                             .bannerImage
-                                            .toString()),
+                                            .toString(),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 180,
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: CachedNetworkImage(
+                                              imageUrl: bannerList[index]
+                                                  .coverImage!
+                                                  .large
+                                                  .toString(),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                                 Positioned(
                                   left: 0,
@@ -120,11 +184,15 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        bannerList[index].title!.english.toString(),
+                                        bannerList[index]
+                                            .title!
+                                            .english
+                                            .toString(),
+                                        textAlign: TextAlign.center,
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 25),
+                                            fontSize: 22),
                                       ),
                                       const SizedBox(
                                         height: 20,
@@ -158,8 +226,7 @@ class _HomePageState extends State<HomePage> {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
-                                                color: const Color.fromARGB(
-                                                    253, 255, 213, 0),
+                                                color: AppColor.primaryColor,
                                               ),
                                               child: const Row(
                                                 mainAxisAlignment:
@@ -191,14 +258,16 @@ class _HomePageState extends State<HomePage> {
                                       width: 40,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
-                                        color: const Color.fromARGB(255, 69, 69, 69),
+                                        color: const Color.fromARGB(
+                                            255, 69, 69, 69),
                                       ),
                                       child: IconButton(
                                           onPressed: () {
                                             VxToast.show(
                                               context,
                                               msg: 'List Updated',
-                                              bgColor: const Color.fromARGB(255, 209, 209, 209),
+                                              bgColor: const Color.fromARGB(
+                                                  255, 209, 209, 209),
                                             );
                                           },
                                           icon: const Icon(
@@ -206,7 +275,6 @@ class _HomePageState extends State<HomePage> {
                                             color: Colors.white,
                                           ))),
                                 ),
-
                               ],
                             ),
                           ),
@@ -259,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(
                                       FluentIcons.data_trending_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                                      color: AppColor.primaryColor,
                                     ),
                                     Text(
                                       'Top Charts',
@@ -295,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(
                                       FluentIcons.grid_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                                      color: AppColor.primaryColor,
                                     ),
                                     Text(
                                       'Genres',
@@ -317,8 +385,8 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 VxToast.show(context,
                                     msg: 'Coming Soon',
-                                    bgColor:
-                                        Color.fromARGB(255, 209, 209, 209));
+                                    bgColor: const Color.fromARGB(
+                                        255, 209, 209, 209));
                               },
                               child: Container(
                                 width: 160,
@@ -336,7 +404,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(
                                       FluentIcons.calendar_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                                      color: AppColor.primaryColor,
                                     ),
                                     Text(
                                       'Schedule',
@@ -371,7 +439,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(
                                       FluentIcons.arrow_shuffle_20_filled,
-                                      color: Color.fromARGB(253, 255, 213, 0),
+                                      color: AppColor.primaryColor,
                                     ),
                                     Text(
                                       'Random',
@@ -449,7 +517,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(state.error),
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       }),
     );
@@ -477,7 +545,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: MediaQuery.of(context).size.height * 0.31,
+        height: MediaQuery.of(context).size.height * 0.22,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: recentList.length,
@@ -485,7 +553,7 @@ class _HomePageState extends State<HomePage> {
             return CustomBox(
               imageAsset: recentList[index].coverImage!.extraLarge.toString(),
               mangaName: recentList[index].title!.english.toString(),
-              chapters: recentList[index].updatedAt.toString(), rating: index.toString(),
+              rating: index.toString(),
             );
           },
         ),
@@ -503,7 +571,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: MediaQuery.of(context).size.height * 0.31,
+        height: MediaQuery.of(context).size.height * 0.22,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: popularList.length,
@@ -511,7 +579,7 @@ class _HomePageState extends State<HomePage> {
             return CustomBox(
               imageAsset: popularList[index].coverImage!.extraLarge.toString(),
               mangaName: popularList[index].title!.english.toString(),
-              chapters: popularList[index].chapters.toString(), rating: index.toString(),
+              rating: index.toString(),
             );
           },
         ),

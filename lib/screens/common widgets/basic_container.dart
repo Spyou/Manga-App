@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -38,11 +39,11 @@ class AllManga extends StatelessWidget {
                             Container(
                               height: 160,
                               width: 115,
-                              decoration: BoxDecoration(
+                              child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      poPular[index].imageAsset.toString()),
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      poPular[index].imageAsset.toString(),
                                   fit: BoxFit.cover,
                                 ),
                               ),
