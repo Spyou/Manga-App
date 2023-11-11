@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         viewportFraction: 1,
-                        height: size.height * .60,
+                        height: size.height * .55,
                         autoPlay: true,
                         autoPlayInterval: const Duration(seconds: 3),
                         autoPlayAnimationDuration:
@@ -89,12 +89,8 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 FadeInAnimation(
                                   child: Container(
-                                    height: size.height / .60,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
+                                    height: size.height / .55,
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
                                       child: CachedNetworkImage(
                                         placeholder: (context, url) {
                                           return const Center(
@@ -105,10 +101,8 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         errorWidget: (context, url, error) {
                                           return Container(
-                                            height: size.height / .60,
+                                            height: size.height / .55,
                                             decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
                                               image: DecorationImage(
                                                 image: NetworkImage(
                                                   bannerList[index]
@@ -138,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Container(
                                           height: 180,
-                                          width: 120,
+                                          width: 125,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10),
@@ -168,8 +162,8 @@ class _HomePageState extends State<HomePage> {
                                     decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
-                                          Color.fromARGB(255, 18, 18, 18),
-                                          Colors.transparent
+                                          AppColor.backgroundColor,
+                                          Colors.transparent,
                                         ],
                                         begin: Alignment.bottomCenter,
                                         end: Alignment.topCenter,
@@ -296,7 +290,7 @@ class _HomePageState extends State<HomePage> {
                           dotColor: Color.fromARGB(255, 69, 69, 69)),
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Column(
                       children: [
