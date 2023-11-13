@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^8.1.2
   cached_network_image: ^3.3.0
   carousel_slider: ^4.2.1
   coolicons: ^1.0.0
@@ -44,6 +45,7 @@ dependencies:
   google_fonts: ^6.1.0
   graphql_flutter: ^5.1.2
   http: ^1.1.0
+  meta: ^1.9.1
   page_transition: ^2.1.0
   shared_preferences: ^2.0.13
   smooth_page_indicator: ^1.1.0
