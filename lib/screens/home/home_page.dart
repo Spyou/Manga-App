@@ -195,6 +195,7 @@ class _HomePageState extends State<HomePage> {
                                             .title!
                                             .english
                                             .toString(),
+                                        maxLines: 2,
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
                                             color: Colors.white,
