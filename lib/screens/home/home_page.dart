@@ -10,15 +10,15 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:manga_app/Widgets/custom_box.dart';
 import 'package:manga_app/blocs/home_bloc/home_bloc.dart';
 import 'package:manga_app/model/banner_model.dart';
+import 'package:manga_app/screens/home/widgets/four_box.dart';
+import 'package:manga_app/screens/home/widgets/genre.dart';
 import 'package:manga_app/utils/ui/colors.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../model/anime_item_model.dart';
 import '../detail_screen/screens/detail.page.dart';
-import 'widgets/genre.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                             child: Stack(
                               children: [
                                 FadeInAnimation(
-                                  child: Container(
+                                  child: SizedBox(
                                     height: size.height / .55,
                                     child: ClipRRect(
                                       child: CachedNetworkImage(
@@ -307,158 +307,60 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         // Box [Top Charts, Genres]
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ZoomTapAnimation(
-                              onTap: () {
+                            FourBox(
+                              onPress: () {
                                 VxToast.show(context,
                                     msg: 'Coming Soon',
                                     bgColor: const Color.fromARGB(
                                         255, 209, 209, 209));
                               },
-                              child: Container(
-                                width: 160,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.data_trending_20_filled,
-                                      color: AppColor.primaryColor,
-                                    ),
-                                    Text(
-                                      'Top Charts',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              title: "Top Charts",
+                              icon: FluentIcons.data_trending_20_filled,
                             ),
-                            ZoomTapAnimation(
-                              onTap: () {
+                            FourBox(
+                              onPress: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             const BrowsePage()));
                               },
-                              child: Container(
-                                width: 150,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.grid_20_filled,
-                                      color: AppColor.primaryColor,
-                                    ),
-                                    Text(
-                                      'Genres',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                              title: "Genres",
+                              icon: FluentIcons.grid_20_filled,
+                            ),
                           ],
                         ),
+                        // Box [Schedule, Random]
                         Row(
-                          // Box [Schedule, Random]
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ZoomTapAnimation(
-                              onTap: () {
+                            FourBox(
+                              onPress: () {
                                 VxToast.show(context,
                                     msg: 'Coming Soon',
                                     bgColor: const Color.fromARGB(
                                         255, 209, 209, 209));
                               },
-                              child: Container(
-                                width: 160,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.calendar_20_filled,
-                                      color: AppColor.primaryColor,
-                                    ),
-                                    Text(
-                                      'Schedule',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              title: "Schedule",
+                              icon: FluentIcons.calendar_ltr_20_filled,
                             ),
-                            ZoomTapAnimation(
-                              onTap: () {
+                            FourBox(
+                              onPress: () {
                                 VxToast.show(context,
                                     msg: 'Coming Soon',
                                     bgColor: const Color.fromARGB(
                                         255, 209, 209, 209));
                               },
-                              child: Container(
-                                width: 150,
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 15),
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 73, 73, 73))),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Icon(
-                                      FluentIcons.arrow_shuffle_20_filled,
-                                      color: AppColor.primaryColor,
-                                    ),
-                                    Text(
-                                      'Random',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                              title: "Random",
+                              icon: FluentIcons.arrow_shuffle_20_filled,
+                            ),
                           ],
                         ),
                       ],

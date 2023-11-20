@@ -2,8 +2,8 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../data/manga.dart';
-import 'common widgets/basic_container.dart';
+import '../../data/manga.dart';
+import '../common widgets/basic_container.dart';
 
 class MyList extends StatefulWidget {
   const MyList({super.key});
@@ -60,8 +60,11 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                             color: Colors.grey,
                           )),
                       TextSpan(
-                          text: '1069',
-                          style: TextStyle(fontWeight: FontWeight.w600))
+                        text: '1069',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
                     ]),
                   )
                 ],
@@ -136,6 +139,8 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
           body: Column(
             children: [
               TabBar(
+                tabAlignment: TabAlignment.start,
+                indicatorPadding: const EdgeInsets.symmetric(vertical: 4),
                 isScrollable: true,
                 splashBorderRadius: BorderRadius.circular(50),
                 splashFactory: NoSplash.splashFactory,

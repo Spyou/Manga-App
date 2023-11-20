@@ -19,7 +19,7 @@ class DetailPage extends StatelessWidget {
         body: CustomScrollView(slivers: [
       SliverAppBar(
           pinned: true,
-          expandedHeight: 400,
+          expandedHeight: 420,
           backgroundColor: AppColor.backgroundColor,
           foregroundColor: Colors.white,
           scrolledUnderElevation: 0,
@@ -85,7 +85,7 @@ class DetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Padding(
-              padding: EdgeInsets.only(bottom: 30, left: 15, top: 20),
+              padding: EdgeInsets.only(bottom: 30, left: 15, top: 10),
               child: Text(
                 'Chapters',
                 style: TextStyle(
