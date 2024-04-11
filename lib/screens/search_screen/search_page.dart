@@ -1,7 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:velocity_x/velocity_x.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../data/manga.dart';
@@ -31,9 +30,7 @@ class SearchPage extends StatelessWidget {
                           suffixIcon: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ZoomTapAnimation(
-                              onTap: () {
-                                VxToast.show(context, msg: 'Filter');
-                              },
+                              onTap: () {},
                               child: Container(
                                 height: 40,
                                 width: 40,

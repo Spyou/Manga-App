@@ -27,6 +27,11 @@ class MyApp extends StatelessWidget {
       child: BlocConsumer<HomeBloc, HomeState>(
         builder: (context, state) {
           return MaterialApp(
+            // darkTheme: ThemeData.dark(
+            //   useMaterial3: true,
+            // ).copyWith(
+            //   scaffoldBackgroundColor: const Color.fromARGB(255, 18, 18, 18),
+            // ),
             theme: ThemeData(
                     useMaterial3: true,
                     fontFamily: GoogleFonts.poppins().fontFamily)

@@ -18,7 +18,7 @@ class AccountTab extends StatelessWidget {
                 width: size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage(Assets.assetsGenreImage1),
                     fit: BoxFit.cover,
                   ),

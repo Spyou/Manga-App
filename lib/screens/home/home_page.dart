@@ -7,18 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:manga_app/Widgets/custom_box.dart';
 import 'package:manga_app/blocs/home_bloc/home_bloc.dart';
 import 'package:manga_app/model/banner_model.dart';
-import 'package:manga_app/screens/home/widgets/four_box.dart';
 import 'package:manga_app/screens/home/widgets/genre.dart';
 import 'package:manga_app/utils/ui/colors.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:velocity_x/velocity_x.dart';
 
+import '../../data/manga.dart';
 import '../../model/anime_item_model.dart';
 import '../detail_screen/screens/detail.page.dart';
+import 'widgets/four_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+    List<MangaModel> genreTop = List.of(genre);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: BlocConsumer<HomeBloc, HomeState>(listener: (context, state) {
@@ -271,12 +273,14 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       child: IconButton(
                                           onPressed: () {
-                                            VxToast.show(
-                                              context,
-                                              msg: 'List Updated',
-                                              bgColor: const Color.fromARGB(
-                                                  255, 209, 209, 209),
-                                            );
+                                            Fluttertoast.showToast(
+                                                msg: "Bookmark Added",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: Colors.white,
+                                                textColor: Colors.black,
+                                                fontSize: 16.0);
                                           },
                                           icon: const Icon(
                                             Icons.bookmark_border_rounded,
@@ -304,8 +308,73 @@ class _HomePageState extends State<HomePage> {
                           dotColor: Color.fromARGB(255, 69, 69, 69)),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
+
+                    // const Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Text(
+                    //         "Genres",
+                    //         style: TextStyle(
+                    //           color: Colors.white,
+                    //           fontSize: 20,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+
+                    // // circle genres
+                    // Container(
+                    //   margin: const EdgeInsets.symmetric(horizontal: 10),
+                    //   height: 130,
+                    //   child: ListView.builder(
+                    //       shrinkWrap: true,
+                    //       scrollDirection: Axis.horizontal,
+                    //       itemCount: genreTop.length,
+                    //       itemBuilder: (context, index) {
+                    //         return Stack(
+                    //           children: [
+                    //             Container(
+                    //               margin: const EdgeInsets.all(10),
+                    //               height: 100,
+                    //               width: 100,
+                    //               decoration: BoxDecoration(
+                    //                 borderRadius: BorderRadius.circular(50),
+                    //                 color: Colors.amber,
+                    //               ),
+                    //               child: ClipRRect(
+                    //                   borderRadius: BorderRadius.circular(50),
+                    //                   child: Image.asset(
+                    //                     genreTop[index].imageAsset.toString(),
+                    //                     fit: BoxFit.cover,
+                    //                   )),
+                    //             ),
+                    //             Positioned.directional(
+                    //               textDirection: TextDirection.ltr,
+                    //               start: 0,
+                    //               end: 0,
+                    //               bottom: 10,
+                    //               child: Center(
+                    //                 child: Text(
+                    //                   genreTop[index].title.toString(),
+                    //                   style: GoogleFonts.bebasNeue(
+                    //                       color: Colors.white,
+                    //                       fontSize: 20,
+                    //                       fontWeight: FontWeight.bold),
+                    //                 ),
+                    //               ),
+                    //             )
+                    //           ],
+                    //         );
+                    //       }),
+                    // ),
+
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -315,12 +384,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FourBox(
-                              onPress: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor: const Color.fromARGB(
-                                        255, 209, 209, 209));
-                              },
+                              onPress: () {},
                               title: "Top Charts",
                               icon: FluentIcons.data_trending_20_filled,
                             ),
@@ -330,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const BrowsePage()));
+                                            const GenrePage()));
                               },
                               title: "Genres",
                               icon: FluentIcons.grid_20_filled,
@@ -342,22 +406,12 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FourBox(
-                              onPress: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor: const Color.fromARGB(
-                                        255, 209, 209, 209));
-                              },
+                              onPress: () {},
                               title: "Schedule",
                               icon: FluentIcons.calendar_ltr_20_filled,
                             ),
                             FourBox(
-                              onPress: () {
-                                VxToast.show(context,
-                                    msg: 'Coming Soon',
-                                    bgColor: const Color.fromARGB(
-                                        255, 209, 209, 209));
-                              },
+                              onPress: () {},
                               title: "Random",
                               icon: FluentIcons.arrow_shuffle_20_filled,
                             ),
@@ -453,10 +507,10 @@ class _HomePageState extends State<HomePage> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const DetailPage()));
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.22,
         child: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           scrollDirection: Axis.horizontal,
           itemCount: recentList.length,
           itemBuilder: (context, index) {
@@ -476,13 +530,13 @@ class _HomePageState extends State<HomePage> {
   Widget trendingListBuilder(List<AnimeSmallModel> popularList) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const DetailPage()));
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (context) => const DetailPage()));
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.22,
         child: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           scrollDirection: Axis.horizontal,
           itemCount: popularList.length,
           itemBuilder: (context, index) {

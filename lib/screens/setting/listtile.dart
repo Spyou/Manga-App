@@ -72,24 +72,25 @@ class ExpansionListTile extends StatelessWidget {
                     const Icon(Icons.check, size: 20, color: Colors.white),
               ),
             ]),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          onTap: () {},
+          leading: const Icon(
             FluentIcons.settings_20_filled,
             size: 26,
             color: Colors.blueAccent,
           ),
-          title: Text(
+          title: const Text(
             'General',
             style: TextStyle(color: Colors.white),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             'Customise according to your',
             style: TextStyle(
               color: Colors.grey,
               fontSize: 12,
             ),
           ),
-          trailing: Icon(
+          trailing: const Icon(
             Icons.navigate_next_rounded,
             color: Colors.white,
           ),

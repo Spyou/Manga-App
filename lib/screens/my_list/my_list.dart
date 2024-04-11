@@ -1,6 +1,5 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../data/manga.dart';
 import '../common widgets/basic_container.dart';
@@ -82,9 +81,7 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                   ),
                   itemBuilder: (context) => [
                     PopupMenuItem(
-                      onTap: () {
-                        VxToast.show(context, msg: 'Sort Updating To Score');
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Sort by Score',
                         style: TextStyle(
@@ -94,9 +91,7 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     PopupMenuItem(
-                      onTap: () {
-                        VxToast.show(context, msg: 'Sort Updating To Title');
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Sort by Title',
                         style: TextStyle(
@@ -106,10 +101,7 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     PopupMenuItem(
-                      onTap: () {
-                        VxToast.show(context,
-                            msg: 'Sort Updating To Realease Date');
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Sort by Realease Date',
                         style: TextStyle(
@@ -119,10 +111,7 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     PopupMenuItem(
-                      onTap: () {
-                        VxToast.show(context,
-                            msg: 'Sort Updating To Last Updated');
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Sort by Last Updated',
                         style: TextStyle(
